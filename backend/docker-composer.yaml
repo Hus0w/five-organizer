@@ -1,0 +1,17 @@
+services:
+  mariadb:
+    image: 'mariadb:latest'
+    ports:
+      - '3366:3306'
+    environment:
+      - 'MARIADB_DATABASE=poo3_server_mariadb'
+      - 'MARIADB_PASSWORD=game'
+      - 'MARIADB_ROOT_PASSWORD=rootroot'
+      - 'MARIADB_USER=poo3_game'
+    volumes:
+      - ./data/mysql:/var/lib/mysql:rw
+
+  adminer:
+    image: adminer
+    ports:
+      - '8088:8080'
