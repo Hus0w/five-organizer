@@ -4,6 +4,7 @@ import be.hus0w.five_organizer.backend.models.User;
 import be.hus0w.five_organizer.backend.repositories.jpa.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,9 @@ public class UserServiceDB implements IUserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Override
     public List<User> getAllUsers() {
@@ -27,6 +31,8 @@ public class UserServiceDB implements IUserService {
 
     @Override
     public User addUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setActivated(true);
         return userRepository.save(user);
     }
 

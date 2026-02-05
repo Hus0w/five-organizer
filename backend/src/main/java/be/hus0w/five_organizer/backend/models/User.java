@@ -1,11 +1,9 @@
 package be.hus0w.five_organizer.backend.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -15,6 +13,9 @@ public class User {
     private String password;
     private String role;
     private boolean activated;
+
+    public User() {
+    }
 
     public User(int id_user, String email, String password, String role, boolean activated) {
         this.id_user = id_user;
