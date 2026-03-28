@@ -1,0 +1,14 @@
+<p>login-component works!</p>
+
+<table>
+  <tbody> <tr>
+      <td>Login</td>
+      <td><input #inputLogin type="text"></td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><input #inputPassword type="password"></td>
+    </tr>
+  </tbody> </table>
+
+<button type="button" (click)="login(inputLogin.value, inputPassword.value)">Login</button>
